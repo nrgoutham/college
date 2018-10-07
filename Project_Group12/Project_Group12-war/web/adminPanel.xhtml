@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" href="zod.css" type="text/css" />
+        
+        #{admin.adminAcsses()}
+    </h:head>
+    <h:body>
+         <div id="header">
+        <img src="img/logo.png" width="154" height="60" align="left" alt="logo"></img>
+        
+    </div> 
+        <div class="form-control">
+        <h:form>
+		<h3>Add Product</h3>
+                 <h:outputLabel for="productTitle">Product Name: </h:outputLabel>
+                 <h:inputText id="uproductTitle" value="#{admin.productTitle}"/>
+                 &nbsp;&nbsp;&nbsp;
+                 <h:outputLabel for="productQuantity">Quantity: </h:outputLabel>
+                 <h:inputText id="productQuantity" value="#{admin.productQuantity}"/>
+                 &nbsp;&nbsp;&nbsp;
+                  <h:outputLabel for="cost">Price: </h:outputLabel>
+                 <h:inputText id="cost" value="#{admin.cost}"/>
+        
+		<input type="hidden" name="tokenPass" value="#{login.getToken()}" />
+		<h:commandButton action="#{admin.storeProduct()}"
+			value="Add"/>
+	</h:form>
+            </div>
+        <div class="form-control">
+         <h:form>
+		<h3>Remove Product</h3>
+		<h:outputText value="Product Name: " />
+		<h:inputText id="Title" value="#{admin.productTitle}"></h:inputText>
+		
+		
+		
+		<input type="hidden" name="tokenPass" value="#{login.getToken()}" />
+		<h:commandButton action="#{admin.removeProduct()}"
+			value="Remove"></h:commandButton>
+	</h:form>
+          </div>
+           <div class="form-control">
+         <h:form>
+		<h3>Increase Product Quantity</h3>
+		<h:outputText value="Product Name: " />
+		<h:inputText id="Title" value="#{admin.productTitle}"></h:inputText>
+				
+		<h:outputText value="Price: " />
+		<h:inputText id="amount" value="#{admin.productQuantity}"></h:inputText>
+				
+		<input type="hidden" name="tokenPass" value="#{login.getToken()}" />
+		<h:commandButton action="#{admin.incrementQ()}"
+			value="Increase"></h:commandButton>
+	</h:form>
+               </div>
+               
+               <div class="form-control">
+         <h:form>
+		<h3>Decrease Product Quantity</h3>
+		<h:outputText value="Product Name: " />
+		<h:inputText id="title" value="#{admin.productTitle}"></h:inputText>
+		
+		
+		<h:outputText value="Price: " />
+		<h:inputText id="amount" value="#{admin.productQuantity}"></h:inputText>
+		
+		<input type="hidden" name="tokenPass" value="#{login.getToken()}" />
+		<h:commandButton action="#{admin.decrementQ()}"
+			value="Decrease"></h:commandButton>
+	</h:form>
+                   </div>
+        <br> </br>
+        <br> </br>
+        <br> </br>
+        
+        <h3>
+        <h:outputText value="#{admin.actionMessage}" />
+        </h3>
+        
+        <h:form>
+            <br/><br/>
+        
+        <h:commandButton action="landing" value="Back"/>
+        
+        </h:form>
+    </h:body>
+</html>
+

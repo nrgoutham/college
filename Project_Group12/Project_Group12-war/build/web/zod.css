@@ -1,0 +1,99 @@
+html {
+    background: #E6E6FA;
+    color: black;
+    text-align: left;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 5px 0px;
+}
+input {
+    padding: 4px 6px;
+}
+
+ul li {
+    width: 100%;
+}
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+#header {
+   background-color: #6495ED;
+   color: #FFFFFF;
+}
+#logo {
+   font-size: 30px;  
+   line-height: 40px;    
+   padding: 5px;
+   color: #FFFFFF;
+}
+#navWrap {
+   height: 10px;
+}
+
+nav {
+    margin-left: 7px;
+    padding: 0px 0px;
+    background: #90EE90;
+    float: left;
+    width: 985px;
+}
+.col-3{
+    width: 25%;
+}
+.col-4{
+    width: 31.3%;
+}
+.col-8{
+    width: 64.7%;
+}
+.col-3, .col-4, .col-8 {
+    background: #90EE90;
+    float: left;
+    background: #90EE90;
+    margin: 10px 10px;
+}
+.col-3, .col-4 {
+    text-align: center;
+}
+.home-box {
+    min-height: 150px;
+}
+form {
+    width: 100%;
+    float: left;
+}
+.search-label {
+    width: 150px;
+}
+.button {
+    padding: 4px;
+    text-align: center;
+}
+.book-description{
+    background: #90EE90;
+}
+.comments li {
+    position: relative;
+    padding-left: 25%;
+}
+.avatar {
+    width: 25%;
+    position:absolute;
+    left: 0;
+}
+.author-name {
+    width: 75%;
+}
+.text-align-left {
+    text-align: left;
+}
+.form-control {
+    margin: 10px 0px 5px 5px;
+    float: left;
+    width: 100%;
+}

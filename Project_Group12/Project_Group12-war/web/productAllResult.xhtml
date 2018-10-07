@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="zod.css"></link>
+    </h:head>
+    <h:body>
+         <div id="header">
+        <img src="img/logo.png" width="154" height="60" align="left" alt="logo"></img>
+        
+    </div>
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Products available</h1>
+        <br /><br />
+        
+            <h:dataTable value="#{showProduct.getAllProducts()}" 
+                         var="product" border="1" cellpadding="10">
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                        #{product.description}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                        #{product.productId}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Cost(€)</f:facet>
+                        #{product.purchaseCost}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                        #{product.quantityOnHand}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Available</f:facet>
+                        #{product.available}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Enter Quantity Required</f:facet>
+                    <h:form>
+                        <h:inputText value="#{addCartBean.quantityVar}">
+                                <f:validateLongRange minimum="0" maximum="100"/>
+                        </h:inputText>
+                        <h:commandButton value="Add To Cart" action="#{addCartBean.addToBasket(product.description, addCartBean.quantityVar)}"></h:commandButton>
+                    </h:form>    
+                </h:column>
+                        
+                <h:column>
+                    <f:facet name="header">Enter Quantity To Remove</f:facet>
+                        <h:form>
+                        <h:inputText value="#{addCartBean.quantityVar1}">
+                                <f:validateLongRange minimum="0" maximum="100"/>
+                        </h:inputText>
+                                    <h:commandButton action="#{addCartBean.removeFromBasket(product.description, addCartBean.quantityVar1)}" value ="Remove from Basket"/>
+                        </h:form>    
+                </h:column>
+                       
+            </h:dataTable>
+               
+                <h:form><h2>
+            <input type="hidden" name="tokenPassCart" value="#{login.getToken()}" />
+            <h:commandButton action="#{addCartBean.checkout()}" 
+                                             value ="Checkout"/>
+            &nbsp;&nbsp;&nbsp;
+            <h:commandButton action="#{addCartBean.cancel()}" value ="Cancel"/>
+            &nbsp;&nbsp;&nbsp;
+            <h:commandButton action="landing" value="Back"/>
+            </h2>
+            </h:form>
+
+       <br/><br/><br/>
+        <h3>product Search by ID</h3>
+        <h:form>
+           
+                Enter Product ID:
+                
+                <h:inputText id="prodcutId" value="#{showProduct.productId}"/>
+                
+                <h:commandButton action="productAllResult" value="Search by Product ID"/>         
+               <h:dataTable value="#{showProduct.getProductByID()}" 
+                         var="product" border="1" cellpadding="10">
+                <h:column>
+                    <f:facet name="header">Product Name</f:facet>
+                        #{product.description}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Product ID</f:facet>
+                        #{product.productId}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Price(€)</f:facet>
+                        #{product.purchaseCost}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                        #{product.quantityOnHand}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Stock Available</f:facet>
+                        #{product.available}
+                </h:column>
+            </h:dataTable>        
+        
+        </h:form>
+        <br/>
+        <br/>
+        
+        <h3>product Search by Name</h3>
+        <h:form>
+           
+                Enter Product Name:
+               
+                <h:inputText id="productName" value="#{showProduct.productName}"/>
+               
+                <h:commandButton action="productAllResult" value="Search by Product name"/>
+                </h:form>
+        <br/>
+         
+            <h:dataTable value="#{showProduct.getProductByName()}" 
+                         var="product" border="1" cellpadding="10">
+                <h:column>
+                    <f:facet name="header">Product Name</f:facet>
+                        #{product.description}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Product ID</f:facet>
+                        #{product.productId}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Price(€)</f:facet>
+                        #{product.purchaseCost}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                        #{product.quantityOnHand}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Stock Available</f:facet>
+                        #{product.available}
+                </h:column>
+                
+            </h:dataTable>
+    </h:body>
+</html>
+
